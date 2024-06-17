@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react"
 import { useContext, createContext, useState } from "react"
 
@@ -8,7 +9,7 @@ export default function Sidebar({ children }) {
   
   return (
     <aside className="h-screen">
-      <nav className="h-full flex flex-col bg-white border-r shadow-sm">
+      <nav className="h-full flex flex-col bg-slate-900 border-r shadow-sm">
         <div className="p-4 pb-2 flex justify-between items-center">
           <img
             src="https://img.logoipsum.com/243.svg"
@@ -19,7 +20,7 @@ export default function Sidebar({ children }) {
           />
           <button
             onClick={() => setExpanded((curr) => !curr)}
-            className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
+            className="p-1.5 rounded-lg bg-slate-600 hover:bg-slate-400"
           >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
           </button>
@@ -43,7 +44,7 @@ export default function Sidebar({ children }) {
           >
             <div className="leading-4">
               <h4 className="font-semibold">John Doe</h4>
-              <span className="text-xs text-gray-600">johndoe@gmail.com</span>
+              <span className="text-xs text-slate-600">johndoe@gmail.com</span>
             </div>
             <MoreVertical size={20} />
           </div>
@@ -52,6 +53,10 @@ export default function Sidebar({ children }) {
     </aside>
   )
 }
+
+Sidebar.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export function SidebarItem({ icon, text, active, alert }) {
   const { expanded } = useContext(SidebarContext)
@@ -65,7 +70,7 @@ export function SidebarItem({ icon, text, active, alert }) {
         ${
           active
             ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-            : "hover:bg-indigo-50 text-gray-600"
+            : "hover:bg-indigo-50 text-slate-600"
         }
     `}
     >
@@ -100,3 +105,10 @@ export function SidebarItem({ icon, text, active, alert }) {
     </li>
   )
 }
+
+SidebarItem.propTypes = {
+  icon: PropTypes.node.isRequired,
+  text: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired,
+  alert: PropTypes.bool.isRequired,
+};
