@@ -8,6 +8,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #242424;
-  color: wheat;
+  /* background-color: indigo-950; */
+  background-color: #020617;
+  color: #e2e8f0;
 }
